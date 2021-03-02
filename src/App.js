@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Header from './components/Header';
+import MyPage from './components/MyPage';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <div>카테고리</div>
-      <div>카드리스트</div>
+      <MyPage />
       <div>푸터</div>
     </div>
   );

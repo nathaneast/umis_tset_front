@@ -11,6 +11,7 @@ const Container = styled.div`
 
 const NavBarWrapper = styled.nav`
   padding: 15px 0px;
+  margin-bottom: 30px;
 `;
 
 const NavBar = styled.ul`

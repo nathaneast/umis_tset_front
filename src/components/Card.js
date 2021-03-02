@@ -8,6 +8,7 @@ const Container = styled.article`
   overflow: hidden;
   background: rgb(255, 255, 255);
   box-shadow: rgb(194 194 194 / 40%) 0px 4px 15px;
+  margin-bottom: 20px;
 `;
 
 const Head = styled.div`

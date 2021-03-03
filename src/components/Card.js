@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { InputDefault, ButtonDefault } from '../styles/reStyled';
+import ImageForm from './ImageForm';
 
 const Container = styled.article`
   border-radius: 10px;
@@ -49,12 +50,33 @@ const Desc = styled.div`
   }
 `;
 
-const Form = styled.form``;
+const FormInputItem = styled.div`
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  align-items: center;
+  padding: 10px 0px;
+`;
+
+const ImageFormList = styled.div`
+  display: flex;
+  padding-left: 70px;
+`;
 
 const TitleInput = styled(InputDefault)``;
 
-const DescInput = styled(InputDefault)`
-  height: 157px;
+const TextArea = styled.textarea`
+  width: 100%;
+  background: rgb(253, 253, 253);
+  border: 1px solid rgb(187, 187, 187);
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 13px 20px;
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: normal;
+  height: 170px;
 `;
 
 const ButtonRow = styled.div`
@@ -64,10 +86,12 @@ const ButtonRow = styled.div`
 
 const ButtonRed = styled(ButtonDefault)`
   background: rgb(249, 167, 167);
+  padding: 10px;
 `;
 
 const ButtonBlue = styled(ButtonDefault)`
   background: rgb(139, 174, 239);
+  padding: 10px;
 `;
 
 const Card = () => {
@@ -87,17 +111,21 @@ const Card = () => {
             후기를 작성해주세요. <br /> 소정의 포인트가 지급됩니다.
           </p>
         </div>
-        <Form>
-          <div>
+        <form>
+          <FormInputItem>
             <label>제목</label>
-            <TitleInput />
-          </div>
-          <div>
+            <TitleInput placeholder="제목을 입력하세요." />
+          </FormInputItem>
+          <FormInputItem>
             <label>내용</label>
-            <DescInput />
-          </div>
-        </Form>
-        <div>사진첨부들</div>
+            <TextArea placeholder="내용을 입력하세요. 30자~500자 등록 가능" />
+          </FormInputItem>
+          <ImageFormList>
+            {[...Array(3)].map((n, i) => (
+              <ImageForm key={i} />
+            ))}
+          </ImageFormList>
+        </form>
         <div>
           <ButtonRow>
             <ButtonRed>후기 작성</ButtonRed>

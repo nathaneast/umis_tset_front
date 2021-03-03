@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
 
 import logoImage from '../assets/umis_logo.png';
 import allamImage from '../assets/umis_allam.svg';
 import myImage from '../assets/umis_my.svg';
 import categoryImage from '../assets/umis_category.svg';
+import ringImage from '../assets/umis_ring.svg';
 
 const NavBarWrapper = styled.div`
   height: 130px;
@@ -60,10 +62,10 @@ const CategoryRow = styled.div`
   }
 `;
 
-const Header = () => {
+const Header = ({ isMobile }) => {
   return (
     <header>
-      <NavBarWrapper>
+      <NavBarWrapper id="header-navbar">
         <NavBar>
           <li>
             <a>회원가입</a>
@@ -73,23 +75,36 @@ const Header = () => {
           </li>
         </NavBar>
       </NavBarWrapper>
-      <LogoRow>
+      <LogoRow id="header-logo">
         <div>
           <a>
             <img src={logoImage} alt="logo" width="180px" />
           </a>
         </div>
-        <Menu>
+        <Menu id="header-menu">
           <img src={allamImage} alt="allam" />
           <img src={myImage} alt="my" />
         </Menu>
       </LogoRow>
-      <CategoryRow>
-        <img src={categoryImage} alt="category" />
-        <span>카테고리</span>
+      <CategoryRow id="header-category">
+        {isMobile ? (
+          <>
+            <img src={ringImage} alt="category" />
+            <img src={categoryImage} alt="category" />
+          </>
+        ) : (
+          <>
+            <img src={categoryImage} alt="category" />
+            <span>카테고리</span>
+          </>
+        )}
       </CategoryRow>
     </header>
   );
+};
+
+Header.propTypes = {
+  isMobile: propTypes.bool.isRequired,
 };
 
 export default Header;

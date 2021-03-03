@@ -39,6 +39,8 @@
     "react/no-array-index-key": "off",
     "no-unused-vars": "off",
     "import/prefer-default-export": "off",
-    "react/button-has-type": "off"
+    "react/button-has-type": "off",
+    "no-use-before-define": "off",
+    "comma-dangle": "off"
   }
 }

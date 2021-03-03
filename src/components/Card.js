@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import propTypes from 'prop-types';
 
 import { InputDefault, ButtonDefault } from '../styles/reStyled';
 import ImageForm from './ImageForm';
@@ -94,7 +95,7 @@ const ButtonBlue = styled(ButtonDefault)`
   padding: 10px;
 `;
 
-const Card = () => {
+const Card = ({ cardNum, onSubmitHandler, onChange, onClickImage }) => {
   return (
     <Container>
       <Head>
@@ -111,37 +112,54 @@ const Card = () => {
             후기를 작성해주세요. <br /> 소정의 포인트가 지급됩니다.
           </p>
         </div>
-        <form>
+        <article>
           <FormInputItem>
             <label>제목</label>
-            <TitleInput placeholder="제목을 입력하세요." />
+            <TitleInput
+              onChange={(e) => onChange(e, 'title')}
+              name={`title_${cardNum}`}
+              placeholder="제목을 입력하세요."
+            />
           </FormInputItem>
           <FormInputItem>
             <label>내용</label>
-            <TextArea placeholder="내용을 입력하세요. 30자~500자 등록 가능" />
+            <TextArea
+              onChange={(e) => onChange(e, 'desc')}
+              name={`desc_${cardNum}`}
+              placeholder="내용을 입력하세요. 30자~500자 등록 가능"
+            />
           </FormInputItem>
           <ImageFormList>
             {[...Array(3)].map((n, i) => (
-              <ImageForm key={i} />
+              <ImageForm key={i} cardNum={cardNum} onClick={onClickImage} />
             ))}
           </ImageFormList>
-        </form>
-        <div>
-          <ButtonRow>
-            <ButtonRed>후기 작성</ButtonRed>
-          </ButtonRow>
-          <ButtonRow>
-            <ButtonRed>후기 보기</ButtonRed>
-            <ButtonBlue>후기 수정</ButtonBlue>
-          </ButtonRow>
-          <ButtonRow>
-            <ButtonRed>취소</ButtonRed>
-            <ButtonBlue>등록하기</ButtonBlue>
-          </ButtonRow>
-        </div>
+          <div>
+            <ButtonRow>
+              <ButtonRed onClick={() => onSubmitHandler(cardNum)}>
+                후기 작성
+              </ButtonRed>
+            </ButtonRow>
+            <ButtonRow>
+              <ButtonRed>후기 보기</ButtonRed>
+              <ButtonBlue>후기 수정</ButtonBlue>
+            </ButtonRow>
+            <ButtonRow>
+              <ButtonRed>취소</ButtonRed>
+              <ButtonBlue>등록하기</ButtonBlue>
+            </ButtonRow>
+          </div>
+        </article>
       </Contents>
     </Container>
   );
+};
+
+Card.propTypes = {
+  cardNum: propTypes.number.isRequired,
+  onSubmitHandler: propTypes.func.isRequired,
+  onChange: propTypes.func.isRequired,
+  onClickImage: propTypes.func.isRequired,
 };
 
 export default Card;

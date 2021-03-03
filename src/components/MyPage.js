@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Card from './Card';
+import CardList from './CardList';
 
 const Container = styled.div`
   width: 880px;
@@ -58,7 +58,7 @@ const MyPage = () => {
         <h1>마이페이지</h1>
       </div>
       <NavBarWrapper>
-        <NavBar>
+        <NavBar id="myPage-navBar">
           <li>
             <a>신청 내역</a>
           </li>
@@ -79,11 +79,7 @@ const MyPage = () => {
           </li>
         </NavBar>
       </NavBarWrapper>
-      <section>
-        {[...Array(7)].map((n, i) => (
-          <Card key={i} />
-        ))}
-      </section>
+      <CardList />
       <MorePost>
         <button>더 보기</button>
       </MorePost>

@@ -1,0 +1,35 @@
+.hide {
+  display: none;
+}
+
+@media screen and (max-width: 375px) {
+  #header-navbar {
+    display: none;
+  }
+
+  #header-logo {
+    padding: 10px 0px;
+  }
+
+  #header-menu {
+    display: none;
+  }
+
+  #header-category {
+    padding: 15px 0px;
+    border-top: none;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #myPage-navBar {
+    display: flex;
+    flex-wrap: wrap;
+    width: 375px;
+    margin: 0px;
+  }
+
+  #myPage-navBar > li {
+    margin-bottom: 10px;
+  }
+}
